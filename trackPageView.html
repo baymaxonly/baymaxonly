@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<title></title>
+    <link rel="import" href="head.html">
+    <script>
+
+        _hmt.push(['_setAccount', '70477fb289a53c702883b8cd1465ea2a']);
+    </script>
+</head>
+<body>
+
+
+
+
+<a href="test.html"> mygithub.io</a>
+<br>
+
+<a href="#TB_inline?height=155&width=300&inlineId=hiddenModalContent&modal=true"
+   onclick="_hmt.push('_trackPageView','/login')" class="thickbox">Show hidden modal content.</a>
+
+
+<div id="login_thickbox" style="display: none">
+
+    <form>
+        用户名： <input type="text" /><br>
+        密码：<input type="text">
+    </form>
+</div>
+
+
+<div>
+
+    _trackPageview
+    用于发送某个指定URL的PV统计请求，通常用于AJAX页面的PV统计。
+
+    语法
+    _hmt.push(['_trackPageview', pageURL]);
+
+    举例
+    _hmt.push(['_trackPageview', '/virtual/login']);
+
+    参数
+    名称	必选/可选	类型	功能	备注
+    pageURL	必选	String	指定要统计PV的页面URL	必须是以"/"（斜杠）开头的相对路径
+</div>
+
+
+<div>
+    举例
+    例如www.example.com在用户点击"登录"按钮后会弹出一个登录浮动层，我们希望统计这个浮动层的pv，就可以在响应点击事件时调用该接口。
+
+    &lt;a id="login" onclick="_hmt.push(['_trackPageview', '/virtual/login']); showLoginDialog();"
+       href="javascript:void(0)"&gt;登录&tt;/a&gt;
+    这样在用户登录时就相当于访问了这个页面: http://www.example.com/virtual/login。在受访页面等报告中也能看到该URL的相关数据。
+
+    还可以用来监控在线沟通工具的访问情况，例如监控百度商桥：
+
+    document.getElementById('BDBridgeIconWrap').onmouseup = function() {
+    _hmt.push(['_trackPageview', '/im/qiao']);
+    };
+    这样在"受访页面"报告中http://www.example.com/im/qiao的PV，就是用户打开商桥的次数了
+
+    如果您的页面url略显杂乱，希望在统计报告中可以按照某种规则进行重命名，也可以使用_trackPageview：
+
+    _hmt.push(['_setAutoPageview', false]);
+    _hmt.push(['_trackPageview', '/new/path/new/name']);
+    在例子中，我们首先使用了_setAutoPageview接口关闭了自动PV跟踪，然后使用了_trackPageview接口来发送新的PV统计请求。
+
+    这样在页面被访问时，记入PV的就不是原URL了，而是您指定的新的URL。
+
+    请注意上述代码最好能够加在页头</head>标签前，至少要保证位于百度统计分析代码的前面。
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<title></title>
+    <link rel="import" href="head.html">
+
+</head>
+<body>
+
+
+
+
+<a href="test.html"> mygithub.io</a>
+<br>
+
+<a id="download" onclick="_hmt.push(['_trackEvent', 'software', 'download', 'ttplayer']);"
+   href="http://www.example.com/download/ttpsetup.exe" target="_blank">下载</a>
+
+
+
+<div>
+
+    设置步骤
+    申请帐号并在站点上安装百度统计访问分析代码。更多信息请查看帮助。
+    在响应点击/开始/停止/下载等事件时，在JS中调用事件跟踪代码。
+
+    _hmt.push(['_trackEvent', category, action, opt_label, opt_value]);
+    category：要监控的目标的类型名称，通常是同一组目标的名字，比如"视频"、"音乐"、"软件"、"游戏"等等。该项必选。
+    action：用户跟目标交互的行为，如"播放"、"暂停"、"下载"等等。该项必选。
+    opt_label：事件的一些额外信息，通常可以是歌曲的名称、软件的名称、链接的名称等等。该项可选。
+    opt_value：事件的一些数值信息，比如权重、时长、价格等等，在报表中可以看到其平均值等数据。该项可选。
+    查看"事件跟踪"报告，在报告中就能看到指定事件的数据了。
+    举例
+    例如我们可以使用_trackEvent来对某种类型的链接进行监控：
+
+    &lt;a onclick="_hmt.push(['_trackEvent', 'nav', 'click', 'literature'])" href="http://www.example.com/literature"&gt;文学&lt;/a&gt;
+    这样就可以在百度统计的"事件跟踪"报告中查看首页导航栏中，采用点击操作、且是关于文学内容链接的点击次数了
+
+    例如用户点击播放按钮会播放"Hey Jude"这首歌，那么在对应的事件处理函数中可以这样来监控播放或暂停事件：
+
+    _hmt.push(['_trackEvent', 'video', 'play', 'Hey Jude']);
+    _hmt.push(['_trackEvent', 'video', 'pause', 'Hey Jude']);
+    在"事件跟踪"报告中就能看到播放/暂停等事件的对应数据了
+
+    例如页面上有一个"千千静听"的下载链接，那么可以这样来监控下载事件：
+
+    &lt;a id="download" onclick="_hmt.push(['_trackEvent', 'software', 'download', 'ttplayer']);"
+       href="http://www.example.com/download/ttpsetup.exe" target="_blank"&gt;下载&lt;/a&gt;
+    然后在"事件跟踪"报告中就能看到下载事件的对应数据了
+
+    使用限制和常见问题
+    "动作"参数有时也可以用来记录一些额外信息。比如当同时提供多种格式的文档供用户下载时，就可以用"动作"参数来保存文档格式，如"PDF"、"TXT"等等。
+
+    _hmt.push(['_trackEvent', 'document', 'PDF', 'Market Requirements Document']);
+
+
+<div>
+    举例
+    例如www.example.com在用户点击"登录"按钮后会弹出一个登录浮动层，我们希望统计这个浮动层的pv，就可以在响应点击事件时调用该接口。
+
+    &lt;a id="login" onclick="_hmt.push(['_trackPageview', '/virtual/login']); showLoginDialog();"
+       href="javascript:void(0)"&tt;登录&tt;/a&gt;
+    这样在用户登录时就相当于访问了这个页面: http://www.example.com/virtual/login。在受访页面等报告中也能看到该URL的相关数据。
+
+    还可以用来监控在线沟通工具的访问情况，例如监控百度商桥：
+
+    document.getElementById('BDBridgeIconWrap').onmouseup = function() {
+    _hmt.push(['_trackPageview', '/im/qiao']);
+    };
+    这样在"受访页面"报告中http://www.example.com/im/qiao的PV，就是用户打开商桥的次数了
+
+    如果您的页面url略显杂乱，希望在统计报告中可以按照某种规则进行重命名，也可以使用_trackPageview：
+
+    _hmt.push(['_setAutoPageview', false]);
+    _hmt.push(['_trackPageview', '/new/path/new/name']);
+    在例子中，我们首先使用了_setAutoPageview接口关闭了自动PV跟踪，然后使用了_trackPageview接口来发送新的PV统计请求。
+
+    这样在页面被访问时，记入PV的就不是原URL了，而是您指定的新的URL。
+
+    请注意上述代码最好能够加在页头</head>标签前，至少要保证位于百度统计分析代码的前面。
+
+</div>
+</body>
+</html>
+
